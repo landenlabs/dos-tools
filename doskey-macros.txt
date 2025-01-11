@@ -1,0 +1,78 @@
+;=
+;=
+;= See dossetup.bat 
+;=      doskey /macrofile=d:\opt\bin\doskey-macros.txt
+;=
+;=
+;= Alternate way to get batch to run on startup - 
+;=    Run regedit,  HKCU/software/microsoft/CommandProcessor
+;=                 string AutoRun = d:\opt\bin\doskey-macros.txt
+;=    Ex - oneliner
+;=        reg add "HKCU\Software\Microsoft\Command Processor" /v Autorun /d "doskey /macrofile=\"d:\bin\dossetup.bat\"" /f
+;=
+;= Doskey aliases d:/opt/bin/doskey-macros.txt
+;=
+h=doskey /history
+;= history=doskey /history
+alias=doskey /macros
+;=
+cd2=cd ..\..
+cd3=cd ..\..\..
+cd4=cd ..\..\..\..
+cd5=cd ..\..\..\..\..
+;=
+crisp=d:\opt\util\CRISP\bin.w32\crisp.exe $*
+cr=d:\opt\util\CRISP\bin.w32\crisp.exe $*
+ne=D:\opt\util\Notepad++\notepad++.exe $*
+pe=D:\opt\devel\phoenix\pe.exe $*
+vc=d:\opt\dev-util\vscode\bin\code.cmd $*
+winmerge=d:\opt\disk\WinMerge\WinMergeU.exe $*
+identify=d:\opt\bin\identify.bat $*
+;=  Cygwin Unix
+gfind=d:\opt\cygwin\bin\find.exe  $*
+grep=d:\opt\cygwin\bin\grep.exe -I $*
+file=d:\opt\cygwin\bin\file.exe $*
+xnview=d:\opt\art\XnViewMP\xnviewmp.exe $*
+7z=d:\opt\disk\7zip\7z.exe $*
+
+;=
+;= Unix commands
+ls=ld $*
+;=
+;= Special locations  d/opt/bin/doskey-macros.txt
+go-web=cd /d D:\opt\soft\dlang-website
+go-dev=cd /d "r:\software\soft2\soft14\c-c++\dlang14c++\All"
+go-dev=cd /d F:\opt\software\cpp\dlang\all
+go-cpp=cd /d F:\opt\software\cpp\dlang\all
+go-cs=cd /d F:\opt\software\c#\dlang
+go-download=cd /d "C:\Users\dlang_local\Downloads"
+go-home=cd /d "C:\Users\dlang_local"
+;= go-home=cd %USERPROFILE%
+;= go-download=cd %USERPROFILE%\Downloads
+
+
+
+gitadd        =git add $*
+gitbranch     =git branch $*
+gitcomit      =git commit $*
+gitcheckout   =git checkout $*
+gitmerge      =git merge $*
+gitpush       =git push $*
+gitstatus     =git status $*
+gitlog        =git log --pretty=format:'%h%x09%an%x09%ad%x09%s'
+gitlog        =git log --pretty=format:'%%h%%x09%%an%%x09%%ad%%x09%%s'
+gitloggraph   =git log --graph --all
+gitdifX       =git difftool -x xxdiff $*
+gitdifO       =git difftool -x opendiff $*
+gitdifV       =git difftool -x codeDiff $*
+gitdif        =git difftool -y -x winmerge.bat $*
+git1dayDiff   =git diff --name-only "'@{1 day ago}'" $*
+gitshowpend   =git show --name-only HEAD $*
+git-branches  =git for-each-ref --format="%%(committerdate) : %%(authorname) : %%(refname)" --sort=committerdate ^| grep refs/remotes ^| tr ":" "\t"
+gitlistCommit =git show --stat $*                                # list files in commit
+gitlistRange  =git show --stat --oneline $*      # beforeFirstCommit..LastCommit or   firstCommit firstCommit..LastCommit
+gitshow       =git remote show origin
+gitshow-br-color =git for-each-ref --sort=committerdate refs/heads/ --format="%%(HEAD) %%(color:yellow)%%(refname:short) : %%(color:red)%%(objectname:short) : %%(authorname) : %%(color:green)%%(committerdate:relative)%%(color:reset)  : %%(contents:subject)"
+gitshow-br-table =git for-each-ref --sort=committerdate refs/heads/ --format="%%(HEAD) %%(refname:short) : %%(objectname:short) : %%(authorname) : %%(committerdate:relative): %%(contents:subject)" ^| column.exe -t -s ":"
+gitclean      =git gc --aggressive
+gitclean-branch =git fetch --prune
