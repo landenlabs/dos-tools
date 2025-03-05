@@ -1,0 +1,9 @@
+# .gitignore
+
+# Ignore executables
+*.exe
+*.dll
+*.Identifier
+*.lnk
+
+old/

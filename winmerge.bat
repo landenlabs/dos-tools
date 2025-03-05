@@ -1,0 +1,1 @@
+d:\opt\disk\WinMerge\WinMergeU.exe %*
